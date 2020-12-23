@@ -1,0 +1,135 @@
+<웹 기반 어플리케이션>
+
+  - 개발환경 구축
+  - 웹 아키텍처
+  - jsp/ servlet, spring, spring boot(비공식 과정)
+  - 배치(일괄처리)
+
+
+*목표* : spring 환경에서 일반적인 게시판 기능을 8시간 이내에 완성하는 것
+
+1. 서버 환경의 이해 Client/Server Architecture
+  - presentation : 사용자 인터페이스(화면) (web)
+  - business logic : 업무처리 로직 (servlet)
+  - data(access logic) : data저장/접근 or database server
+
+  - 시스템 내에 Client,server 모듈이 공존
+  - 확장이 어려움
+
+ - client가 프로그램을 업데이트 하지 않았을 경우
+ - 서로 다른 버전의 프로그램으로 인한 로직 제어 문제
+ - 업데이트를 하지 않을 경우 서비스를 이용하지 못할 수도
+ - 프로그램 업데이트로 인한 배포 문제
+    -> 클라이언트 ~~~
+
+2. 서버 환경의 이해 Client/Server Architecture(2-tier)
+  - 전용 client프로그램 - 속도빠름(병원 진료, 차트 프로그램)
+  - 데이터베이스만 공유하고 UI, business로직은 Client프로그램에 탑재
+  - Client간 통신이 힘듦/ 보안 문제
+
+3. 서버 환경의 이해 Client/Server Architecture(3-tier)
+   - 전용 client프로그램 - 속도빠름(온라인게임)
+   - server를 통해 client간 통신 가능(business logic)
+   - client프로그램의 배포의 문제
+
+4. 서버 환경의 이해 web Architecture
+   - 전용 Client프로그램 - 웹 브라우저
+   - client : 화면 제어(자바스크립트)
+   - server : 비지니스 로직 제어(jsp, mvc framework)
+   - 업데이트 된 부분은 Server에만 배포 
+4-1. 서버 환경의 이해 web Architecture - 제한사항
+   - 브라우저 기능에 의존 : 제한적인 UI(Flex: 예쁘지만 느림 / 요즘 사용하지 않음,flash)
+   - 브라우저 기능을 벗어나는 추가기능 사용시 호환성/보안문제 (Active x)
+   - 모든 브라우저가 동일한 기능을 제공하지 않음(브라우저별 호환문제, Cross Browsing)
+   - 같은 브라우저의 버전별 호환문제
+
+서버환경의 이해 : Cs vs Web 배포대상
+
+웹서버 : 클라이언트 요청을 받아 결과를 전송 / 정적 자원 처리에 최적화(html, css, js, image)
+웹 어플리케이션 서버 : 로직에 의해 동적 컨텐츠를 생성하여 Web server에 전달 
+		     Web server의 역할을 겸함 (tomcat)
+	
+  - 클라이언트 서버 아키텍쳐와 웹 아키텍처 비교
+  - 웹 아키텍처의 장점
+  - 앞으로 개발시 필요 환경(이클립스, 톰캣, 오라클)
+  - 형상 관리의 필요성 이해
+
+서버 프로그램 구현하기 - web이란
+  - WWW(World Wide Web)
+  - 인터넷에 연결된 컴퓨터들을 통해 사람들이 정보를 공유할 수 있는 정보 공간
+  - HTTP프로토콜, 하이퍼텍스트 , HTML형식 등을 사용하여 그림과 문자를 교환하는 전송 방식
+  - URL을 통해 요청
+  - 초기 웹은 정적인 공간, 문서 공유를 위한 목적으로 탄생(웹페이지)
+  - 동적으로 컨텐츠를 생성할 수 있는 web프로그래밍(웹어플리케이션)환경 등장(applet, *jsp*, asp, 웹 어플리케이션)
+
+			** 웹페이지 -> 웹 어플리케이션 **
+
+서버 프로그램 구현하기 - 웹 어플리케이션 서버 방식(WAS)  
+  - servlet/jsp는 thread방식으로 실행 - 동시처리 성능 우수
+  - servlet/jsp는 main함수를 이용해 실행하지 않는다 
+
+서버 프로그램 구현하기 - 자바와 웹프로그래밍
+  - servlet : 자바의 웹 개발 표준 스펙, 스펙에 따라 만들어진 소스 멀티 쓰레드로 실행 / 자바 코드안에 html
+  - jsp : 실행 코드 방식인 servlet의 스크립트 방식의 표준 스펙 jsp는 실행시 servlet으로 변환 되어 실행 
+	/ html문서 안에 자바코드
+  - web container : 표준 규약에 따라 구현된 웹 어플리케이션을 관리하고 실행할 수 있는 소프트웨어
+		(톰캣, resin, jboss등)
+
+
+정리 
+- 웹의 탄생 배경
+- URL을 통한 웹서버 요청/응답 과정
+- 자바 기반의 웹 프로그래밍 개요(servlet/jsp) 
+
+웹기반 어플리케이션 - 서블릿 프로그래밍 - 서블릿 기초
+servlet
+-  server program + let(작다를 뜻하는 접미어) : 작은 서버 프로그램
+- J2EE의 표준 스펙 중 하나
+  servelt, jsp
+- A servlet is a  Java technology-based Web conponent, managed by a container, that *generates dynamic content*
+
+Web Application Server : WAS(jboss, IBM 웹스피어)
+	Servlet Container + EJB Container
+
+ servlet Container[Web Container](tomcat)
+
+- MIME : Multipurpose Internet Mail Extensions
+- 전자 우편을 위한 인터넷 표준 포맷
+  - 간이 전자 우편 전송 프로토콜
+  - smtp에서는 기본적으로 7비트 기준 아스키 코드만 전송 가능
+    영어가 아닌 외국어, 특수기호, 이미지, 파일 전송을 위해서는 인코딩이 필요 -> MIME
+- http에서도 차용
+- Content-Type 어떤 형식의 자료를 송수신하는지 관리
+
+Maven Project
+Group id : 해당 프로젝트를 진행하는 회사에 대한 정보 
+	 일반적으로 회사의 도메인 역순으로 기술
+	 회사에 도메인 역순으로 기술
+	 naver.com ==> moc.revan
+		   ==> com.naver
+	 google.com ==> com.google
+	 ddit.or.kr ==> kr.or.ddit
+Artifact id : Group id에 해당하는 회사에서 진행하는 프로젝트명
+           	   google : GMAIL, GOOGLE DRIVE
+
+VERSION : 프로젝트의 버전
+	  대.중.소 EX) 3.5.2
+jar : Java ARchive : 클래스들을 묶어 놓은 파일, 압축파일
+
+class, html, jsp, image, css, javascript
+war :  WebARchive : 웹 프로그램을 묶어 놓은 파일
+	tomcat의 webapps폴더에 war파일을 복사 해놓고 톰캣을 가동하면
+	war파일을 톰캣이 자동으로 압축을 해제하여 어플리케이션이 서비스 되도록한다
+
+pom : Project Object Model - 프로젝트에 대한 설정 정보
+	해당 프로젝트를 만든 회사
+	프로젝트 이름
+	프로젝트의 버전
+	프로젝트에서 필요로 하는 의존성(dependency) - 라이브러리(ojdbc6.jar)
+	pom.xml
+
+
+
+
+
+
