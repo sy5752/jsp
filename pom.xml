@@ -42,6 +42,15 @@
 		<version>1.2.3</version>
 		<!-- <scope>test</scope> -->
 	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.13.1</version>
+		<scope>test</scope>
+	</dependency>
+	
 	
 	<!-- scope
 		 생략시 (dafault) compile - 컴파일 과정부터 배포되는 과정까지 해당 라이브러리가 필요함을 의미	
