@@ -50,7 +50,7 @@ HttpServletRequest : 사용자가 요청을 보낼때의 정보(파라미터, �
 		<body>
 			request.getContentType() : 리턴값을 출력 <br>
 			request.getMethod() : 리턴값을 출력 <br>
-			request.getRequestURL() : 리턴값을 출력 <br>
+			request.getRequestURI() : 리턴값을 출력 <br>
 			request.getContextPath() : 리턴값을 출력 <br>
 			request.getServerPort() : 리턴값을 출력 <br>
 			
