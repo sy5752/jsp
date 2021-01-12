@@ -38,6 +38,10 @@
   
   </select>
   
+  <update id="updateUser" parameterType="String">
+  	UPDATE SET
+  </update>
+  
  
   
 
