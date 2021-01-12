@@ -121,7 +121,7 @@
 			<label for="userid" class="sr-only">userid</label> 
 			<input type="text" id="userid" class="form-control"placeholder="사용자 아이디" required autofocus name="userid"> 
 			<label for="inputPassword" class="sr-only">Password</label> 
-			<input type="password" id="inputPassword" class="form-control" name="pass" placeholder="Password" value="brownpass" required>
+			<input type="password" id="inputPassword" class="form-control" name="pass" placeholder="Password"  required>
 			<div class="checkbox">
 				<label> <input type="checkbox" id="rememberme" value="remember-me">Remember me</label>
 			</div>

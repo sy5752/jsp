@@ -17,12 +17,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.user.service.UserService;
+import kr.or.ddit.user.service.UserServiceI;
+
 /* web.xml에 설정하는 servlet, servlet-mapping을 어노테이션을 통해 설정하는 방법 */
 @WebServlet("/loginController")
 public class LoginController extends HttpServlet {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-
+	private UserServiceI userService = new UserService();
+	
+	
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -101,9 +107,14 @@ public class LoginController extends HttpServlet {
 
 		String userid = req.getParameter("userid");
 		String pass = req.getParameter("pass");
-
-		if (userid.equals("brown") && pass.equals("brownpass")) {
+		
+		
+		UserVo user = userService.selectUser(userid);
+		// 로그인 성공 서비스를 통해 데이터베이스에 저장된 값과 일치할 떄
+		// session에 데이터베이스에서 조회한 사용자 정보(UserVo)를 저장
+		if (user !=null && pass.equals(user.getPass())) {
 			req.getRequestDispatcher("/main.jsp").forward(req, resp);
+		
 		}
 		// 로그인 실패
 		else {
