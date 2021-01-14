@@ -61,6 +61,12 @@
 						#{addr2},
 						#{zipcode})
 	</insert>
+	
+	<!-- 사용자 삭제  -->
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM users WHERE userid = #{value}
+	
+	</delete>
 
 
 </mapper>

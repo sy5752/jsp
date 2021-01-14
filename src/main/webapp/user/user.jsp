@@ -14,6 +14,27 @@
 	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
 
+<script>
+	/* 사용자 수정 : method - get action = /userModify
+	사용자 삭제 : method - post action = /deleteUser
+	파라미터는 둘다 userid 하나만 있으면 가능 */
+// 문서 로딩이 완료되었을때
+$(function () {
+	$("#modifyBtn").on("click", function () {
+		$("#frm").attr("method", "get");
+		$("#frm").attr("action", "<%=request.getContextPath()%>/userModify");
+		$("#frm").submit();
+	});
+	
+	$("#deleteBtn").on("click", function () {
+		$("#frm").attr("method", "post");
+		$("#frm").attr("action", "<%=request.getContextPath()%>/deleteUser");
+		$("#frm").submit();		
+	});
+	
+})
+</script>
+
 </head>
 <body>
 	<%@ include file="/common/header.jsp" %>
@@ -31,8 +52,18 @@
 				
 				<% UserVo user = (UserVo) request.getAttribute("user"); %>
 				
-				<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModify">
+				 <form class="form-horizontal" id="frm" role="form" > 
 					<input type="hidden"  name="userid" value="<%=user.getUserid() %>"/>
+					
+					<div class="form-group">
+						<label for="userid" class="col-sm-2 control-label">사용자 사진</label>
+						<div class="col-sm-10">
+							<img src="<%=request.getContextPath() %>/profile/<%=user.getUserid() %>.png"/>
+							<%-- <label class="control-label"><%= user.getUserid() %></label> --%>
+						</div>
+					</div>
+					<%-- <form class="form-horizontal" id="frm" role="form" > 
+					<input type="hidden"  name="userid" value="<%=user.getUserid() %>"/> --%>
 					
 					<div class="form-group">
 						<label for="userid" class="col-sm-2 control-label">사용자 아이디</label>
@@ -100,7 +131,9 @@
 					
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">사용자 수정</button>
+							
+							<button type="button"  id="modifyBtn" class="btn btn-default">사용자 수정</button>
+							<button type="button" id="deleteBtn" class="btn btn-default">사용자 삭제</button>
 						</div>
 					</div>
 				</form>
