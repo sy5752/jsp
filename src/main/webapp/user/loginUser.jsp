@@ -7,11 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="${cp}/sumCalculation" method="post">
-		<input type="text" name="start"> 부터
-		<input type="text" name="end"> 까지의 합<br>
-		<input type="submit" value="전송"> 	
-	</form>
-
+	user set : ${USER_SET }
+	
 </body>
 </html>

@@ -20,7 +20,7 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
+<link href="${cp}/css/signin.css" rel="stylesheet">
 <script>
 	//public static String getCookieValues(String cookieStr, String cookieName){		
 	//}
@@ -115,9 +115,10 @@
 <body>
 
 	<div class="container">
-		UNT_CD : ${param.UNT_CD }/ <%=request.getParameter("UNT_CD") %>
+		cp: ${cp } / <%=application.getAttribute("cp") %>
+		<%-- UNT_CD : ${param.UNT_CD }/ <%=request.getParameter("UNT_CD") %> --%>
 
-		<form class="form-signin" id="frm" action="${pageContext.request.contextPath}/loginController" method="post">
+		<form class="form-signin" id="frm" action="${cp}/loginController" method="post">
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<label for="userid" class="sr-only">userid</label> 
 			<input type="text" id="userid" class="form-control"placeholder="사용자 아이디" required autofocus name="userid"> 

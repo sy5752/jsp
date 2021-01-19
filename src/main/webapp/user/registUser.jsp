@@ -19,9 +19,9 @@
 <%@ include file="/common/common_lib.jsp"%>
 
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/css/dashboard.css"
+<link href="${cp}/css/dashboard.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
+<link href="${cp}/css/blog.css" rel="stylesheet">
 
 <% UserVo user = (UserVo)request.getAttribute("vo"); %>
 
@@ -72,8 +72,8 @@
 			
 			
 				
-<%-- 				<form class="form-horizontal" role="form" action="${pageContext.request.contextPath }/registUser" method="post"> --%>
-				<form class="form-horizontal" role="form" method="post" action="${pageContext.request.contextPath }/registUser">
+<%-- 				<form class="form-horizontal" role="form" action="${cp }/registUser" method="post"> --%>
+				<form class="form-horizontal" role="form" method="post" action="${cp }/registUser">
 					
 					<div class="form-group">
 						<label class="col-sm-2 control-label">사용자 아이디</label>

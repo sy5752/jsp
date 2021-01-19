@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,9 +25,9 @@
 
 <!-- Custom styles for this template -->
 
-<link href="${pageContext.request.contextPath}/css/dashboard.css"
+<link href="${cp}/css/dashboard.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
+<link href="${cp}/css/blog.css" rel="stylesheet">
 
 <script>
 //문서 로딩이 완료되고나서 실행되는 영역
@@ -45,7 +46,7 @@ $(function() {
 
 <body>
 	
-	<form id="frm" action="${pageContext.request.contextPath}/user">
+	<form id="frm" action="${cp}/user">
 		<input type="hidden" id="userid" name="userid" value=""/>
 	</form>
 	<%@include file="/common/header.jsp"%>
@@ -90,11 +91,11 @@ $(function() {
 					}
 					%> --%>
 					<c:forEach items="${List }" var="user">
-						<tr class="user" data-userid="${user.userid }">
+						<tr class="user" data-userid="${user.userid}">
 							<td>${user.userid }</td>
 							<td>${user.usernm }</td>
 							<td>${user.alias }</td>
-							<td>${user.getReg_dt_fmt() }</td>
+							<td><fmt:formatDate value="${user.reg_dt}" pattern="yyyy.MM.dd"/></td>
 						</tr>
 					</c:forEach>
 
@@ -103,7 +104,7 @@ $(function() {
 			</div>
 
 <!-- 						<a class="btn btn-default pull-right" href="/user/registUser.jsp">사용자 등록</a> -->
-						<a class="btn btn-default pull-right" href="${pageContext.request.contextPath }/registUser">사용자 등록</a>
+						<a class="btn btn-default pull-right" href="${cp }/registUser">사용자 등록</a>
 	
 				<div class="text-center">
 							<%-- <% PageVo pageVo  = (PageVo)request.getAttribute("pageVo");
@@ -116,7 +117,7 @@ $(function() {
 								     전체 페이지 수 : 4페이지
 								 --%> 
 								 <li class="prev">
-									<a href="${pageContext.request.contextPath}/pagingUser?page=1&pageSize=${pageVo.pageSize}">«</a>
+									<a href="${cp}/pagingUser?page=1&pageSize=${pageVo.pageSize}">«</a>
 								</li>
 					<c:forEach begin="1" end="${pagination}" var="i">
 						<%-- <%for(int i = 1; i <= pagination; i++){ --%>
@@ -126,7 +127,7 @@ $(function() {
 							</c:when>
 							<c:otherwise>
 								<li><a
-									href="${pageContext.request.contextPath}/pagingUser?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
+									href="${cp}/pagingUser?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
 							</c:otherwise>
 						</c:choose>
 								<%-- 	if(pageVo.getPage() == i){%>
@@ -136,7 +137,7 @@ $(function() {
 						<%} %> --%>
 					</c:forEach>
 					<li class="next">
-									<a href="${pageContext.request.contextPath}/pagingUser?page=${pagination}&pageSize=${pageVo.pageSize}">»</a>
+									<a href="${cp}/pagingUser?page=${pagination}&pageSize=${pageVo.pageSize}">»</a>
 								</li>
 							</ul>
 						</div>

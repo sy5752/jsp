@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,9 +24,9 @@
 
 <!-- Custom styles for this template -->
 
-<link href="${pageContext.request.contextPath}/css/dashboard.css"
+<link href="${cp}/css/dashboard.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
+<link href="${cp}/css/blog.css" rel="stylesheet">
 </head>
 
 <body>
@@ -50,16 +51,13 @@
 						<td>등록일시</td>
 					</tr>
 
-				 	<%
-					List<UserVo> users = (List<UserVo>) request.getAttribute("List");
-					%>
 					
 					<c:forEach items="${List }" var="users">
 						<tr>
 							<td>${users.userid}</td>
 							<td>${users.usernm}</td>
 							<td>${users.alias}</td>
-							<td>${users.getReg_dt_fmt()}</td>
+							<td><fmt:formatDate value="${user.reg_dt}" pattern="yyyy.MM.dd"/></td>
 						</tr>
 					</c:forEach>
 					
