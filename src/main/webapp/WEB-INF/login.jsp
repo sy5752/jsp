@@ -36,12 +36,12 @@
     <title>Signin Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-<%--     <link href="<%= request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet"> --%>
+<%--     <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet"> --%>
     <%@ include file="/common/common_lib.jsp" %>
     <%-- common_lib.jsp의 내용을 지금 기술되는 부분에 코드를 복사해서 붙여 넣기 --%>
     
     
-    <link href="<%= request.getContextPath() %>/css/signin.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/css/signin.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
@@ -52,7 +52,7 @@
 
     <div class="container">
 
-      <form class="form-signin" action="<%= request.getContextPath() %>/loginController" method="post">
+      <form class="form-signin" action="<%=request.getContextPath()%>/loginController" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="userid" class="sr-only">userId</label>
         <input type="text" id="userid" class="form-control" placeholder="userid" required autofocus name="userid" value="brown">

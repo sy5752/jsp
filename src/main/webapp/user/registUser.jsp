@@ -19,9 +19,9 @@
 <%@ include file="/common/common_lib.jsp"%>
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${pageContext.request.contextPath}/css/dashboard.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 
 <% UserVo user = (UserVo)request.getAttribute("vo"); %>
 
@@ -72,24 +72,21 @@
 			
 			
 				
-				<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/registUser" method="post">
+<%-- 				<form class="form-horizontal" role="form" action="${pageContext.request.contextPath }/registUser" method="post"> --%>
+				<form class="form-horizontal" role="form" method="post" action="${pageContext.request.contextPath }/registUser">
 					
 					<div class="form-group">
 						<label class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
-						<% String userid = request.getParameter("userid");
-							userid = userid == null ? "" : userid;%>
-						<input type="text" class="form-control" id="userid" name="userid" placeholder="사용자 아이디" value="<%=userid%>"/>
+							<input type="text" class="form-control" id="userid" name="userid" placeholder="사용자 아이디" value="${param.userid}"/>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="usernm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
-						<% String usernm = request.getParameter("usernm");
-								usernm = usernm == null ? "" : usernm;%>
 							<input type="text" class="form-control" id="usernm" name="usernm"
-								placeholder="사용자 이름" value="<%=usernm%>" />
+								placeholder="사용자 이름" value="${param.usernm}" />
 						</div>
 					</div>
 					
@@ -98,10 +95,9 @@
 					<div class="form-group">
 						<label for="alias" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
-						<% String alias = request.getParameter("alias");
-								alias = alias == null ? "" : alias;%>
+						
 							<input type="text" class="form-control" id="alias" name="alias"
-								placeholder="별명" value="<%=alias%>" />
+								placeholder="별명" value="${param.alias}" />
 						</div>
 					</div>
 		
@@ -109,10 +105,9 @@
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">비밀번호</label>
 						<div class="col-sm-10">
-						<% String pass = request.getParameter("pass");
-								pass = pass == null ? "" : pass;%>
+						
 							<input type="password" class="form-control" id="pass" name="pass"
-								placeholder="비밀번호" value="<%=pass%>"/>
+								placeholder="비밀번호" value="${param.pass}"/>
 						</div>
 					</div>
 					<%-- 
@@ -129,10 +124,9 @@
 					<div class="form-group">
 						<label for="addr1" class="col-sm-2 control-label">도로주소</label>
 						<div class="col-sm-8">
-						<% String addr1 = request.getParameter("addr1");
-								addr1 = addr1 == null ? "" : addr1;%>
+						
 							<input type="text" class="form-control" id="addr1" name="addr1"
-								placeholder="도로주소"  value="<%=addr1%>"readonly/>
+								placeholder="도로주소"  value="${param.addr1}"readonly/>
 					</div>
 						<div class="col-sm-2">
 							<button type="button" id="addrBtn" class="btn btn-default">주소검색</button>
@@ -142,20 +136,18 @@
 					<div class="form-group">
 						<label for="addr2" class="col-sm-2 control-label">상세주소</label>
 						<div class="col-sm-10">
-						<% String addr2 = request.getParameter("addr2");
-								addr2 = addr2 == null ? "" : addr2;%>
+						
 							<input type="text" class="form-control" id="addr2" name="addr2"
-								placeholder="상세주소" value="<%=addr2%>"/>
+								placeholder="상세주소" value="${param.addr2}"/>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="zipcode" class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-10">
-						<% String zipcode = request.getParameter("zipcode");
-								zipcode = zipcode == null ? "" : zipcode;%>
+						
 							<input type="text" class="form-control" id="zipcode" name="zipcode"
-								placeholder="우편번호"  value="<%=zipcode%>"readonly />
+								placeholder="우편번호"  value="${param.zipcode}"readonly />
 						</div>
 					</div>
 					

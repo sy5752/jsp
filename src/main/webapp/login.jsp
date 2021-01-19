@@ -20,7 +20,7 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/signin.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
 <script>
 	//public static String getCookieValues(String cookieStr, String cookieName){		
 	//}
@@ -116,7 +116,7 @@
 
 	<div class="container">
 
-		<form class="form-signin" id="frm" action="<%=request.getContextPath() %>/loginController" method="post">
+		<form class="form-signin" id="frm" action="${pageContext.request.contextPath}/loginController" method="post">
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<label for="userid" class="sr-only">userid</label> 
 			<input type="text" id="userid" class="form-control"placeholder="사용자 아이디" required autofocus name="userid"> 

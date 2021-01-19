@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/sumCalculation" method="post">
+	<form action="${pageContext.request.contextPath}/sumCalculation" method="post">
 		<input type="text" name="start"> 부터
 		<input type="text" name="end"> 까지의 합<br>
 		<input type="submit" value="전송"> 	

@@ -1,5 +1,4 @@
 
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="kr.or.ddit.common.model.PageVo"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
@@ -69,7 +68,7 @@ $(function() {
 						<td>등록일시</td>
 					</tr>
 
-					<%-- 			<%
+					<%-- <%
 					List<UserVo> paging = (List<UserVo>) request.getAttribute("List");
 					%>
 
@@ -78,36 +77,39 @@ $(function() {
 					
 					for (int i = 0; i < paging.size(); i++) {
 						UserVo vo = paging.get(i);
+						
+						
 					
-					%>
-					<tr class="user" data-userid="<%=vo.getUserid()%>">
+					
+					%> --%>
+					<c:forEach items="${List}" var="user">
+					
+					
+					
+					<%-- <tr class="user" data-userid="<%=vo.getUserid()%>">
 						<td><%=vo.getUserid()%></td>
 						<td><%=vo.getUsernm()%></td>
 						<td><%=vo.getAlias()%></td>
 						<td><%=vo.getReg_dt_fmt()%></td>	
-					</tr>
-					<%
-					}
-					%> --%>
-					<c:forEach items="${List }" var="user">
-						<tr class="user" data-userid="${user.userid }">
-							<td>${user.userid }</td>
-							<td>${user.usernm }</td>
-							<td>${user.alias }</td>
-							<td>${user.getReg_dt_fmt() }</td>
+					</tr> --%>
+						<tr class="user" data-userid="${user.getUserid()}">
+							<td>${user.getUserid()}</td>
+							<td>${user.getUsernm()}</td>
+							<td>${user.getAlias()}</td>
+							<td>${user.getReg_dt_fmt()}</td>
 						</tr>
 					</c:forEach>
-
+				<%-- 	<%
+					}
+					%> --%>
 				</table>
-				
-			</div>
+				</div>
 
-<!-- 						<a class="btn btn-default pull-right" href="/user/registUser.jsp">사용자 등록</a> -->
-						<a class="btn btn-default pull-right" href="${pageContext.request.contextPath }/registUser">사용자 등록</a>
+						<a class="btn btn-default pull-right" href="/user/registUser.jsp">사용자 등록</a>
 	
 				<div class="text-center">
-							<%-- <% PageVo pageVo  = (PageVo)request.getAttribute("pageVo");
-							   int pagination =	(int)request.getAttribute("pagination");%> --%>
+						 	<% PageVo pageVo  = (PageVo)request.getAttribute("pageVo");
+							   int pagination =	(int)request.getAttribute("pagination");%> 
 							<ul class="pagination">
 								
 								<%-- pagination 값이 4이므로 1부터 4까지 4번 반복된다
@@ -116,27 +118,31 @@ $(function() {
 								     전체 페이지 수 : 4페이지
 								 --%> 
 								 <li class="prev">
-									<a href="${pageContext.request.contextPath}/pagingUser?page=1&pageSize=${pageVo.pageSize}">«</a>
+									<a href="${pageContext.request.contextPath}/pagingUser?page=1&pageSize=${pageVo.getPageSize() }">«</a>
 								</li>
-					<c:forEach begin="1" end="${pagination}" var="i">
-						<%-- <%for(int i = 1; i <= pagination; i++){ --%>
-						<c:choose>
-							<c:when test="${pageVo.page == i }">
-								<li class="active"><span>${i}</span></li>
-							</c:when>
-							<c:otherwise>
-								<li><a
-									href="${pageContext.request.contextPath}/pagingUser?page=${i}&pageSize=${pageVo.pageSize}">${i}</a></li>
-							</c:otherwise>
-						</c:choose>
+								
+								<%-- <%for(int i = 1; i <= pagination; i++){ --%>
+								<%-- <c:forEach items="${List}" var="user">  --%>
+									<c:forEach begin="1" end="pagination" var="user">  
+									<c:choose>
+								 		<c:when test="${pageVo.getPage() == user}">
+											<li class="active"><span>${user}</span></li>								 		
+										</c:when>
+								 		<c:otherwise>
+											<li><a href="${pageContext.request.contextPath}/pagingUser?page=${user }&pageSize=${pageVo.getPageSize() }">${user}</a></li>
+								 		</c:otherwise>
+									</c:choose>
+								</c:forEach>
+									
 								<%-- 	if(pageVo.getPage() == i){%>
+										<li class="active"><span><%=i %></span></li>
 									<%}
 									else {%>
-						<%} %>
-						<%} %> --%>
-					</c:forEach>
-					<li class="next">
-									<a href="${pageContext.request.contextPath}/pagingUser?page=${pagination}&pageSize=${pageVo.pageSize}">»</a>
+										<li><a href="${pageContext.request.contextPath}/pagingUser?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a></li>
+									<%} %>
+								<%} %> --%>
+								<li class="next">
+									<a href="${pageContext.request.contextPath}/pagingUser?page=${pagination }&pageSize=${pageVo.getPageSize() }">»</a>
 								</li>
 							</ul>
 						</div>

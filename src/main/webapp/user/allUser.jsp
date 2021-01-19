@@ -1,8 +1,10 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +23,9 @@
 
 <!-- Custom styles for this template -->
 
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${pageContext.request.contextPath}/css/dashboard.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 </head>
 
 <body>
@@ -48,25 +50,19 @@
 						<td>등록일시</td>
 					</tr>
 
-					<%
+				 	<%
 					List<UserVo> users = (List<UserVo>) request.getAttribute("List");
 					%>
-
-					<%
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 					
-					for (int i = 0; i < users.size(); i++) {
-						UserVo vo = users.get(i);
-					%>
-					<tr>
-						<td><%=vo.getUserid()%></td>
-						<td><%=vo.getUsernm()%></td>
-						<td><%=vo.getAlias()%></td>
-						<td><%=vo.getReg_dt_fmt()%></td>	
-					</tr>
-					<%
-					}
-					%>
+					<c:forEach items="${List }" var="users">
+						<tr>
+							<td>${users.userid}</td>
+							<td>${users.usernm}</td>
+							<td>${users.alias}</td>
+							<td>${users.getReg_dt_fmt()}</td>
+						</tr>
+					</c:forEach>
+					
 				</table>
 			</div>
 		</div>

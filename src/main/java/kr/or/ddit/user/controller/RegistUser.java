@@ -26,13 +26,13 @@ public class RegistUser extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/user/registerUser.jsp").forward(req, resp);
+		req.getRequestDispatcher("/user/registUser.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.setCharacterEncoding("utf-8");
+//		req.setCharacterEncoding("utf-8");
 		String userid = req.getParameter("userid");
 		String usernm = req.getParameter("usernm");
 		String pass = req.getParameter("pass");
@@ -51,12 +51,12 @@ public class RegistUser extends HttpServlet{
 		}
 		
 		if(insertCnt == 1) {
-			resp.sendRedirect(req.getContextPath()+"/user?userid=" + userid);
+			resp.sendRedirect(req.getContextPath()+"/pagingUser");
 		}
 		else {
 			req.setAttribute("vo", userVo);
-			req.getRequestDispatcher("/user/registerUser.jsp").forward(req, resp);
-//			doGet(req, resp);
+//			req.getRequestDispatcher("/user/registUser.jsp").forward(req, resp);
+			doGet(req, resp);
 		}
 	}
 	
