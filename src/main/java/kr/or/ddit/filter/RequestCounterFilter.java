@@ -35,8 +35,8 @@ public class RequestCounterFilter implements Filter {
 		//request 객체를 이용하여 요청된 URI 정보를 카운팅
 		HttpServletRequest req = (HttpServletRequest)request;
 		String uri = req.getRequestURI();
-		req.setCharacterEncoding("utf-8");
-		chain.doFilter(request, response);
+//		req.setCharacterEncoding("utf-8");
+//		chain.doFilter(request, response);
 		
 		logger.debug("request uri : {}" , uri);
 		// requestCountMap에 uri에 해당 키가 있을 수도 있고 없을 수도 있음
