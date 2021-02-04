@@ -57,7 +57,7 @@
 							<td>${users.userid}</td>
 							<td>${users.usernm}</td>
 							<td>${users.alias}</td>
-							<td><fmt:formatDate value="${user.reg_dt}" pattern="yyyy.MM.dd"/></td>
+							<td><fmt:formatDate value="${users.reg_dt}" pattern="yyyy.MM.dd"/></td>
 						</tr>
 					</c:forEach>
 					

@@ -73,12 +73,14 @@
 			
 				
 <%-- 				<form class="form-horizontal" role="form" action="${cp }/registUser" method="post"> --%>
-				<form class="form-horizontal" role="form" method="post" action="${cp }/registUser">
+				<form class="form-horizontal" role="form" method="post" action="${cp }/registUser" enctype="multipart/form-data">
+				
 					
 					<div class="form-group">
 						<label class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userid" name="userid" placeholder="사용자 아이디" value="${param.userid}"/>
+						<input type="file" class="form-control" name="profile"/>
 						</div>
 					</div>
 

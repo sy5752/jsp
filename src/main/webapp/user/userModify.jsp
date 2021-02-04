@@ -3,6 +3,8 @@
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,12 +61,20 @@ $(function(){
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
-				<% UserVo user = (UserVo)request.getAttribute("user"); %>
+<%-- 				<% UserVo user = (UserVo)request.getAttribute("user"); %> --%>
 				
 				<form class="form-horizontal" role="form"
 					  action="${cp}/userModify" method="post">
 					<input type="hidden" name="userid" value="${user.userid}"/>
 					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">사용자 사진</label>
+						<div class="col-sm-10">
+							<img src="${cp }/profile/${user.userid }.png"/>
+							<input type="file" class="form-control" id="profile" name="profile"
+								value="${user.usernm}"/>
+						</div>
+					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
@@ -80,8 +90,6 @@ $(function(){
 						</div>
 					</div>
 					
-					
-								
 					
 					<div class="form-group">
 						<label for="alias" class="col-sm-2 control-label">별명</label>
@@ -104,7 +112,7 @@ $(function(){
 						<label for="reg_dt" class="col-sm-2 control-label">등록일시</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="reg_dt" name="reg_dt"
-								placeholder="" value="${user.reg_dt}"/>
+								placeholder="" value="<fmt:formatDate value="${user.reg_dt}" pattern="yyyy.MM.dd"/>"/>
 						</div>
 					</div>
 					

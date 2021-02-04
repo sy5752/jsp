@@ -60,8 +60,13 @@ $(function () {
 					<div class="form-group">
 						<label for="userid" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
-							<img src="<%=request.getContextPath() %>/profile/${user.userid}.png"/>
+							<%-- <img src="${cp }/profile/${user.userid}.png"/> --%>
+							
+							<a href="/profileDownload?userid=${user.userid }">
+								<img src="/profile?userid=${user.userid}"/>
+							</a>
 							<%-- <label class="control-label"><%= user.getUserid() %></label> --%>
+							
 						</div>
 					</div>
 					<%-- <form class="form-horizontal" id="frm" role="form" > 

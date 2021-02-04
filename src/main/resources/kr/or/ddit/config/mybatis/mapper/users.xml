@@ -51,7 +51,7 @@
 
 	<!-- 사용자 신규 등록 -->
 	<insert id="registUser" parameterType="userVo">
-		INSERT INTO users (userid, usernm,pass,reg_dt,alias,addr1, addr2, zipcode)
+		INSERT INTO users (userid, usernm,pass,reg_dt,alias,addr1, addr2, zipcode, filename, realfilename)
 				VALUES(#{userid},
 						#{usernm},
 						#{pass},
@@ -59,7 +59,9 @@
 						#{alias},
 						#{addr1},
 						#{addr2},
-						#{zipcode})
+						#{zipcode},
+						#{filename},
+						#{realfilename})
 	</insert>
 	
 	<!-- 사용자 삭제  -->
